@@ -1,8 +1,10 @@
 # IMUDINO
 
-Official PyTorch release of IMUDINO, a general purpose foundation model for inertial sensing.
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow)](https://huggingface.co/Octopus1/IMUDINO)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.07437-b31b1b)](http://arxiv.org/abs/2611.07437)
 
-Learn more about IMUDINO in our [paper](http://arxiv.org/abs/2611.07437).
+Official PyTorch release of IMUDINO, a general purpose foundation model for inertial sensing.
+See the [paper](http://arxiv.org/abs/2611.07437) for details.
 
 ## Download the checkpoint
 
