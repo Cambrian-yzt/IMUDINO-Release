@@ -6,6 +6,43 @@
 Official PyTorch release of IMUDINO, a general purpose foundation model for inertial sensing.
 See the [paper](http://arxiv.org/abs/2611.07437) for details.
 
+## Method overview
+
+![Overview of the IMUDINO training objective](assets/method.png)
+
+*Overview of the IMUDINO training objective (Figure 1 in the paper): semantics-preserving motion
+transformations produce global and local views, which are distilled from an EMA teacher to a
+student with DINO, iBOT++, and KoLeo objectives.*
+
+## Results
+
+Main results on seven HAR datasets (Table 1 in the paper). Bold marks the best result;
+$^*$implemented with IMUDINO data augmentation.
+
+| Type | Method | MoSense | HAPT | HHAR | DSADS | WEAR | OPPO. | Shoaib | Average |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Supervised Baselines | DeepConvLSTM | 93.39 | 82.00 | 91.90 | 83.25 | 75.43 | 40.88 | 97.13 | 80.57 |
+| | A&D | 95.79 | 81.95 | 94.17 | 86.12 | 77.10 | 46.29 | 97.79 | 82.74 |
+| | IF-ConvT. | 95.81 | 85.35 | 95.01 | 88.82 | N/A | 50.29 | 98.28 | 85.59 |
+| | TSF | 97.34 | 85.89 | 95.81 | 89.70 | N/A | 52.44 | 99.35 | 86.76 |
+| Self-supervised HAR FMs | SimCLR$^*$ | 96.08 | 80.56 | 87.56 | 91.56 | 88.48 | 43.50 | 99.29 | 83.86 |
+| | Yuan et al. | 93.41 | 64.66 | 80.41 | 83.37 | 83.10 | 18.28 | 97.30 | 74.36 |
+| | RelCon | 81.93 | 55.75 | 70.57 | 81.04 | 81.55 | 19.80 | 97.32 | 69.64 |
+| | HAR-FM | 84.93 | 71.41 | 76.47 | 84.93 | 80.01 | 20.24 | 97.67 | 73.20 |
+| General-purpose TSFMs | TimesFM 3.0 | 85.64 | 63.30 | 82.97 | 75.09 | 78.92 | 33.50 | 93.61 | 73.29 |
+| | Chronos-2 | 83.95 | 57.04 | 72.60 | 73.04 | 62.93 | 24.65 | 90.71 | 66.36 |
+| IMUDINO (Ours) | IMUDINO-6M | 97.91 | 87.56 | 95.33 | 93.24 | 91.28 | 53.54 | 99.58 | 88.35 |
+| | **IMUDINO-85M** | **98.54** | **89.02** | **96.00** | **94.13** | **92.34** | **58.40** | **99.68** | **89.73** |
+
+Qualitative comparison of inertial human pose estimation on a natural motion sequence
+(Virginia Natural Motion; Figure 4 in the paper):
+
+![Qualitative inertial HPE comparison](assets/fig-mocap-virginia.png)
+
+*From left to right: ground truth, DynaIP, and IMUDINO-85M with an MLP probe, a transformer
+probe, and an MLP probe with finetuned backbone. Numbers below each mesh denote the per-frame
+mean root-aligned global rotation error in degrees.*
+
 ## Download the checkpoint
 
 The weights are hosted on Hugging Face: [Octopus1/IMUDINO](https://huggingface.co/Octopus1/IMUDINO).
