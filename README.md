@@ -1,7 +1,26 @@
-# IMUDINO
+<div align="center">
+
+# IMUDINO: Self-distilled Foundation Model for Inertial Sensing
+
+**Zhoutong Ye**<sup>1‡</sup> ·
+**Chengwen Zhang**<sup>1*</sup> ·
+**Zixuan Wang**<sup>1*</sup> ·
+**Xufeng Jian**<sup>1*</sup> ·
+**Zhe He**<sup>1</sup> ·
+**Qingyang Wan**<sup>1</sup> ·
+**Xutong Wang**<sup>1</sup> ·
+**Jiaqi Liu**<sup>1</sup> ·
+**Mingze Sun**<sup>1</sup> ·
+**Yu Mei**<sup>1</sup> ·
+**Chun Yu**<sup>1†</sup> ·
+**Yuanchun Shi**<sup>1</sup>
+
+<sup>1</sup> Tsinghua University&nbsp;&nbsp;·&nbsp;&nbsp;<sup>†</sup> Corresponding Author&nbsp;&nbsp;·&nbsp;&nbsp;<sup>‡</sup> Project Leader&nbsp;&nbsp;·&nbsp;&nbsp;<sup>*</sup> Equal Contribution
 
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow)](https://huggingface.co/Octopus1/IMUDINO)
 [![arXiv](https://img.shields.io/badge/arXiv-2611.07437-b31b1b)](http://arxiv.org/abs/2611.07437)
+
+</div>
 
 Official PyTorch release of IMUDINO, a general purpose foundation model for inertial sensing.
 See the [paper](http://arxiv.org/abs/2611.07437) for details.
