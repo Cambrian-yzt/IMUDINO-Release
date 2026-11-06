@@ -35,6 +35,8 @@ student with DINO, iBOT++, and KoLeo objectives.*
 
 ## Results
 
+### Human activity recognition
+
 Main results on seven HAR datasets (Table 1 in the paper). Bold marks the best result and
 <u>underline</u> the second best. (\*) Implemented with IMUDINO data augmentation.
 
@@ -53,14 +55,53 @@ Main results on seven HAR datasets (Table 1 in the paper). Bold marks the best r
 | IMUDINO (Ours) | IMUDINO-6M | <u>97.91</u> | <u>87.56</u> | 95.33 | <u>93.24</u> | <u>91.28</u> | <u>53.54</u> | <u>99.58</u> | <u>88.35</u> |
 | | **IMUDINO-85M** | **98.54** | **89.02** | **96.00** | **94.13** | **92.34** | **58.40** | **99.68** | **89.73** |
 
+### Inertial motion capture
+
+MoCap results on AnDy, UNIPD, CIP, and Virginia Natural Motion (Table 2 in the paper): SIP error
+(°), global angular error (°), and joint position error (cm), averaged per sequence. Bold marks
+the best result and <u>underline</u> the second best. (†) Backbone initialized from the pretrained
+IMUDINO checkpoint and finetuned.
+
+| Model | AnDy SIP↓ | AnDy Ang↓ | AnDy Pos↓ | UNIPD SIP↓ | UNIPD Ang↓ | UNIPD Pos↓ | CIP SIP↓ | CIP Ang↓ | CIP Pos↓ | Nat. Mot. SIP↓ | Nat. Mot. Ang↓ | Nat. Mot. Pos↓ | Avg SIP↓ | Avg Ang↓ | Avg Pos↓ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DIP | 11.39 | 5.73 | 4.34 | 12.02 | 5.47 | 4.22 | 19.13 | 8.61 | 6.86 | 33.43 | 11.91 | 13.33 | 18.99 | 7.93 | 7.19 |
+| TransPose | 12.15 | 6.29 | 4.91 | 15.11 | 6.05 | 4.82 | 20.06 | 8.75 | 6.86 | 30.62 | 11.26 | 11.99 | 19.49 | 8.09 | 7.15 |
+| TIP | 10.11 | 4.55 | 3.56 | 9.85 | 4.06 | 2.78 | 13.05 | 5.67 | 4.30 | 22.06 | 7.90 | 7.92 | 13.77 | 5.55 | 4.64 |
+| PIP | <u>9.49</u> | 4.09 | **3.29** | <u>8.90</u> | 3.59 | 2.66 | 12.68 | 5.52 | 4.12 | 19.62 | 7.49 | 6.93 | 12.67 | 5.17 | 4.25 |
+| DynaIP | **8.93** | **3.45** | <u>3.41</u> | **7.29** | **2.77** | **2.21** | **11.42** | **4.54** | **3.69** | **15.78** | <u>7.18</u> | **5.83** | **10.86** | **4.49** | **3.79** |
+| IMUDINO-85M + MLP | 11.64 | 4.24 | 3.99 | 11.66 | 3.95 | 3.29 | 16.25 | 5.87 | 5.13 | 19.03 | 7.30 | 6.44 | 14.65 | 5.34 | 4.71 |
+| IMUDINO-85M + Transformer | 10.83 | 3.88 | 3.50 | 10.82 | 3.69 | 2.92 | 14.04 | 5.25 | 4.39 | 19.54 | 7.28 | 6.61 | 13.81 | 5.02 | 4.36 |
+| IMUDINO-85M + MLP (†) | 10.15 | <u>3.72</u> | 3.43 | 9.45 | <u>3.38</u> | <u>2.50</u> | <u>12.19</u> | <u>4.76</u> | <u>3.95</u> | <u>17.35</u> | **6.65** | <u>5.92</u> | <u>12.28</u> | <u>4.63</u> | <u>3.95</u> |
+
 Qualitative comparison of inertial human pose estimation on a natural motion sequence
-(Virginia Natural Motion; Figure 4 in the paper):
+(Virginia Natural Motion; Figure 2 in the paper):
 
 ![Qualitative inertial HPE comparison](assets/fig-mocap-virginia.png)
 
 *From left to right: ground truth, DynaIP, and IMUDINO-85M with an MLP probe, a transformer
 probe, and an MLP probe with finetuned backbone. Numbers below each mesh denote the per-frame
 mean root-aligned global rotation error in degrees.*
+
+### Robot odometry
+
+Results on the 2026 TartanIMU Challenge (Table 3 in the paper), evaluated with the IMUDINO
+backbone frozen under the platform-agnostic setting. Bold marks the best result and
+<u>underline</u> the second best. (\*) Platform-agnostic. (†) Platform expert.
+
+| Model | Car AVE↓ | Car ATE20↓ | Dog AVE↓ | Dog ATE20↓ | Drone AVE↓ | Drone ATE20↓ | Human AVE↓ | Human ATE20↓ | Avg AVE↓ | Avg ATE20↓ | Avg Score↓ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| TartanIMU (\*) | 0.852 | 2.273 | 0.425 | 1.901 | 1.374 | 2.772 | 0.235 | 1.877 | 0.721 | 2.206 | 0.872 |
+| TartanIMU (†) | <u>0.199</u> | 0.999 | 0.129 | <u>0.644</u> | 0.966 | 2.006 | <u>0.107</u> | **0.814** | 0.350 | 1.116 | 0.429 |
+| IMUDINO-85M + MLP (\*) | 0.200 | <u>0.998</u> | <u>0.123</u> | 0.707 | <u>0.543</u> | <u>1.304</u> | 0.132 | 1.039 | <u>0.249</u> | <u>1.012</u> | <u>0.333</u> |
+| IMUDINO-85M + Transformer (\*) | **0.141** | **0.760** | **0.092** | **0.501** | **0.499** | **1.285** | **0.105** | <u>0.872</u> | **0.209** | **0.854** | **0.280** |
+
+Visualized trajectories on the TartanIMU Challenge (Figure 3 in the paper):
+
+![TartanIMU Challenge trajectory overview](assets/trajectory-overview.png)
+
+*Black dashed lines are ground truth; blue is the official TartanIMU expert per platform, and
+green/orange are IMUDINO with transformer / MLP probes. ▲ marks the start of each trajectory.
+IMUDINO+Transformer traces the ground truth most closely.*
 
 ## Download the checkpoint
 
