@@ -1,6 +1,8 @@
 # IMUDINO
 
-Official PyTorch release of the IMUDINO IMU encoder.
+Official PyTorch release of IMUDINO, a general purpose foundation model for inertial sensing.
+
+Learn more about IMUDINO in our [paper](http://arxiv.org/abs/2611.07437).
 
 ## Download the checkpoint
 
